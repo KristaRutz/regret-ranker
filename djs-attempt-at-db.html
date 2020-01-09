@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="first_try/css/styles.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="first_try/js/scripts.js"></script>
+    <title>Regret Ranker Mainpage</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="main-title">Regret Ranker</h1>
+      <p>Let's channel some <strong>20/20</strong> hindsight <em>- unknown</em></p>
+
+<!--      <img id="picture" src="https://tinyurl.com/lfkubwe" /> -->
+
+      <!--<h3>My Goals:</h3>-->
+      <!--<p>-->
+      <!--  I want to become a professional web developer. Here are the things I'll need to learn first.-->
+      <!--</p>-->
+      
+      <div class="form-group">
+        <label>Username &nbsp</label>
+        <input type="text" name="u_username" id="username" required="required" placeholder="Please Enter Username"/><br /><br />
+<!--        <input type="text" id="new-goal">-->
+<!--        <button class="btn" type="button" id="goal-button">Add regret</button> -->
+      </div>
+      <div class="form-group">
+        <label>New Regret</label>
+        <input type="text" name = "new_goal" id="new-goal">
+        <button class="btn" type="button" id="goal-button">Add regret</button>
+      </div>
+      
+      
+      <ul id="goal-list">
+        <li class="list-item">Today I ate too much food and then was uncomfortable</li>
+        <li class="list-item" id="css-item">missed my gym class</li>
+        <li class="list-item">I left a really nice pair of leather boots in Spain</li>
+        <li class="list-item">I didn't study CS</li>
+      </ul>
+      <!--<h3>My favorite website</h3>-->
+      <!--<h4><a href="http://www.google.com">Google</a></h4>-->
+      <script>
+        $("#goal-button").click(function() {
+        <?php
+        if(isset($_POST["submit"])){
+        $servername = "localhost";
+        $username = "u653854472_deej";
+        $password = "Chubby";
+        $dbname = "u653854472_Users";
+
+    // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "INSERT INTO users (uname, pword, email)
+        VALUES ('".$_POST["u_username"]."','".$_POST["u_password"]."','".$_POST["u_email"]."')";
+
+        if ($conn->query($sql) === TRUE) {
+        echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
+        } else {
+        echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+        }
+
+        $conn->close();
+        }
+        ?>
+      </script>   
+    </div>
+  </body>
+</html>
+<!--
+<form action="" method="post">
+
+<label style= "color: red;">Username :</label>
+<input type="text" name="u_username" id="username" required="required" placeholder="Please Enter Username"/><br /><br />
+<label style= "color: red;">Password :</label>
+<input type="text" name="u_password" id="password" required="required" placeholder="nd89283"/><br/><br />
+<label style= "color: red;">E-mail :</label>
+<input type="email" name="u_email" id="email" required="required" placeholder="johndoe@exmen.com"/><br/><br />
+<input type="submit" value=" Submit " name="submit"/><br />
+
+</form>
+</style>
+</div>
+-->
+<!-- Right side div -->
+<!--
+<div id="formget">
+</div>
+
+</div>
+-->
+ 
